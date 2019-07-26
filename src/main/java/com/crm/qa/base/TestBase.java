@@ -41,13 +41,13 @@ public class TestBase {
         String browserName = prop.getProperty("browser");
 
         if(browserName.equals("chrome")) {
-//            System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
-//            driver = new ChromeDriver();
-
-            String chromeDriverPath = "/usr/bin/chromedriver";
-//            String chromeDriverPath = "/usr/local/bin/chromedriver";
-            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+            System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
             driver = new ChromeDriver();
+
+//            String chromeDriverPath = "/usr/bin/chromedriver";
+//            String chromeDriverPath = "/usr/local/bin/chromedriver";
+//            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+//            driver = new ChromeDriver();
 
         }
         else if(browserName.equals("FF")){
