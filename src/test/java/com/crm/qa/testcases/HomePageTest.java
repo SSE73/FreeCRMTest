@@ -1,9 +1,7 @@
 package com.crm.qa.testcases;
 
 import com.crm.qa.base.TestBase;
-import com.crm.qa.pages.ContactsPage;
-import com.crm.qa.pages.HomePage;
-import com.crm.qa.pages.LoginPage;
+import com.crm.qa.pages.*;
 import com.crm.qa.util.TestUtil;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -16,6 +14,8 @@ public class HomePageTest extends TestBase {
     HomePage homePage;
     TestUtil testUtil;
     ContactsPage contactsPage;
+    DealsPage dealsPage;
+    ProductsPage productsPage;
 
     public HomePageTest(){
         super();
@@ -26,14 +26,14 @@ public class HomePageTest extends TestBase {
         initialization();
         testUtil = new TestUtil();
         contactsPage = new ContactsPage();
+        dealsPage = new DealsPage();
+        productsPage = new ProductsPage();
         loginPage = new LoginPage();
         homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
     }
 
     @Test(priority = 1)
     public void verifyHomePageTitle(){
-//        String homePageTitle = homePage.verifyHomePageTitle();
-//        Assert.assertEquals(homePageTitle, "CRMPRO", "Home page title not matches");
         Assert.assertEquals(homePage.verifyHomePageTitle(), "CRMPRO", "Home page title not matches");
     }
 
@@ -47,15 +47,23 @@ public class HomePageTest extends TestBase {
     public void verifyContactsLinkTest(){
         testUtil.switchToFrame();
         contactsPage = homePage.clickOnContactsLink();
-
     }
 
+    @Test(priority = 4)
+    public void verifyDealsLinkTest(){
+        testUtil.switchToFrame();
+        dealsPage = homePage.clickOnDealsLink();
+    }
 
+    @Test(priority = 5)
+    public void verifyProductsLinkTest(){
+        testUtil.switchToFrame();
+        productsPage = homePage.clickOnProductsPage();
+    }
 
     @AfterMethod
     public void tearDown() {
         driver.quit();
     }
-
 
 }

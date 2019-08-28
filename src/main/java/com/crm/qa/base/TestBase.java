@@ -24,9 +24,7 @@ public class TestBase {
 
 
     public TestBase() {
-
         try {
-
             prop = new Properties();
             FileInputStream ip = new FileInputStream("/home/cerber/IdeaProjects/FreeCRMTest/src/main/java/com/crm/qa/config/config.properties");
             prop.load(ip);
@@ -44,12 +42,6 @@ public class TestBase {
         if(browserName.equals("chrome")) {
             System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
             driver = new ChromeDriver();
-
-//            String chromeDriverPath = "/usr/bin/chromedriver";
-//            String chromeDriverPath = "/usr/local/bin/chromedriver";
-//            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-//            driver = new ChromeDriver();
-
         }
         else if(browserName.equals("FF")){
 //            System.setProperty("webdriver.gecko.driver","/User/geckodriver");
@@ -65,7 +57,7 @@ public class TestBase {
         Dimension dimension = new Dimension(1920, 1080);
         driver.manage().window().setSize(dimension);
 
-//т.к. существует баг для такогоразрешения экрана        driver.manage().window().maximize();
+//т.к. существует баг для такого разрешения экрана driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT,TimeUnit.SECONDS);
@@ -73,5 +65,4 @@ public class TestBase {
         driver.get(prop.getProperty("url"));
 
     }
-
 }

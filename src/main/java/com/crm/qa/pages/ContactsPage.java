@@ -1,5 +1,6 @@
 package com.crm.qa.pages;
 
+import com.crm.qa.base.TestBase;
 import com.crm.qa.util.TestUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class ContactsPage extends TestUtil {
+public class ContactsPage extends TestBase {
 
     @FindBy(xpath = "//td[contains(text(),'Contacts')]")
     WebElement contactsLabel;
@@ -23,10 +24,6 @@ public class ContactsPage extends TestUtil {
 
     @FindBy(xpath = "//input[@type = 'submit' and @value = 'Save']")
     WebElement saveBtn;
-
-
-//    @FindBy(xpath = "//a[text()='Sergey Sysylyatin']//parent::td[@class='datalistrow']//preceding-sibling::td[@class='datalistrow']//input[@name='contact_id']")
-//    @FindBy(xpath = "//a[text()='test1 test3']//parent::td[@class='datalistrow']//preceding-sibling::td[@class='datalistrow']//input[@name='contact_id']")
 
     //Initializing the Paje Objects:
     public ContactsPage(){
