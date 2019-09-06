@@ -26,7 +26,7 @@ public class TestBase {
     public TestBase() {
         try {
             prop = new Properties();
-            FileInputStream ip = new FileInputStream("/home/cerber/IdeaProjects/FreeCRMTest/src/main/java/com/crm/qa/config/config.properties");
+            FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+"/configuration/config.properties");
             prop.load(ip);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -40,16 +40,15 @@ public class TestBase {
         String browserName = prop.getProperty("browser");
 
         if(browserName.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
+            System.setProperty("webdriver.chrome.driver",prop.getProperty("current_dir_browse_driver")+"chromedriver");
             driver = new ChromeDriver();
         }
-        else if(browserName.equals("FF")){
-//            System.setProperty("webdriver.gecko.driver","/User/geckodriver");
+        else if(browserName.equals("firefox")){
+            System.setProperty("webdriver.gecko.driver",prop.getProperty("current_dir_browse_driver")+"geckodriver");
             driver = new FirefoxDriver();
         }
 
         e_driver = new EventFiringWebDriver(driver);
-        // Now create object of EventListerHandler to register it with EventFiringWebDriver
         eventListener = new WebEventListener();
         e_driver.register(eventListener);
         driver = e_driver;
